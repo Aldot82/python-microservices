@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  db:
+    restart: always
+    build: ./docker/database
+    ports:
+      - 5433:5432
+  app:
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./docker/application/Dockerfile
+    command: bash -c "export PYTHONPATH="$PYTHONPATH:/app" && alembic upgrade head && flask run --host=0.0.0.0 --port=5000"
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    environment:
+      - FLASK_APP=main.py
+      - FLASK_ENV=development
+      - FLASK_DEBUG=true
+      - DB_HOST=db
+    volumes:
+      - .:/app
