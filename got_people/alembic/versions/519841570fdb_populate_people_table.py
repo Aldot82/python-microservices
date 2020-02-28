@@ -20,12 +20,12 @@ depends_on = None
 def upgrade():
     op.bulk_insert(
         table_people, [
-            {'id': 1, 'name': 'Sensei Lamister', 'isAlive': True, 'placeId': 1},
-            {'id': 2, 'name': 'Aiba Stack', 'isAlive': True, 'placeId': 3},
-            {'id': 3, 'name': 'Joaquín Nevado', 'isAlive': True, 'placeId': 1},
-            {'id': 4, 'name': 'Dedo Gordo', 'isAlive': False, 'placeId': None},
-            {'id': 5, 'name': 'Juanito Lamister', 'isAlive': True, 'placeId': 1},
-            {'id': 6, 'name': 'Nerf Stack', 'isAlive': True, 'placeId': 3}
+            {'name': 'Sensei Lamister', 'isAlive': True, 'placeId': 1},
+            {'name': 'Aiba Stack', 'isAlive': True, 'placeId': 3},
+            {'name': 'Joaquín Nevado', 'isAlive': True, 'placeId': 1},
+            {'name': 'Dedo Gordo', 'isAlive': False, 'placeId': None},
+            {'name': 'Juanito Lamister', 'isAlive': True, 'placeId': 1},
+            {'name': 'Nerf Stack', 'isAlive': True, 'placeId': 3}
         ]
     )
 

@@ -19,9 +19,9 @@ depends_on = None
 def upgrade():
     op.bulk_insert(
         table_places, [
-            {'id': 1, 'name': 'Descaro del rey'},
-            {'id': 2, 'name': 'Más allá del zumo'},
-            {'id': 3, 'name': 'Veranolandia'}
+            {'name': 'Descaro del rey'},
+            {'name': 'Más allá del zumo'},
+            {'name': 'Veranolandia'}
         ]
     )
 

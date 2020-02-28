@@ -19,7 +19,7 @@ depends_on = None
 def upgrade():
     op.create_table(
         'places',
-        sa.Column('id', sa.Integer, primary_key=True, autoincrement=False),
+        sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('name', sa.String(50), nullable=False),
     )
 

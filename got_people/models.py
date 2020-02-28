@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, Boolean, ForeignKey
+from sqlalchemy import Column, String, Integer, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -13,8 +13,7 @@ class People(Base):
     isAlive = Column(Boolean)
     placeId = Column(Integer)
 
-    def __init__(self, id, name, isAlive, placeId):
-        self.id = id
+    def __init__(self, name, isAlive, placeId):
         self.name = name
         self.isAlive = isAlive
         self.placeId = placeId

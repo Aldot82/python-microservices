@@ -1,12 +1,25 @@
-from alchemy.repository.database_conection import conn
+from alchemy.repository.database_conection import create_connection
+from models import Place
 
 
-def get_all_places():
-    result = conn.execute('select * from places')
+s = create_connection()
+
+
+def find_all():
+    result = s.query(Place)
     return result
 
 
 def find_by_id(place_id):
-    res = conn.execute(f'select * from places where id={place_id}')
-    place = res.fetchone()
-    return place
+    result = s.query(Place).get(place_id)
+    return result
+
+
+def create_place(person_data):
+    place = Place(**person_data)
+    try:
+        s.add(place)
+        s.commit()
+    except Exception:
+        s.rollback()
+        raise

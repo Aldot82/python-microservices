@@ -8,6 +8,3 @@ def create_connection():
     Session = sessionmaker(bind=engine)
     session = Session()
     return session
-
-
-s = create_connection()
