@@ -1,4 +1,6 @@
 from alchemy.repository.database_conection import create_connection
+from sqlalchemy import exc
+
 from models import Place
 
 
@@ -20,6 +22,6 @@ def create_place(person_data):
     try:
         s.add(place)
         s.commit()
-    except Exception:
+    except exc.SQLAlchemyError:
         s.rollback()
         raise

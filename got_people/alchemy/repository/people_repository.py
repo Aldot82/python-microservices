@@ -1,4 +1,6 @@
 from alchemy.repository.database_connection import create_connection
+from sqlalchemy import exc
+
 from models import People
 
 s = create_connection()
@@ -19,6 +21,6 @@ def create_person(person_data):
     try:
         s.add(person)
         s.commit()
-    except Exception:
+    except exc.SQLAlchemyError:
         s.rollback()
         raise

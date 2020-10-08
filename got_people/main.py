@@ -2,6 +2,7 @@ from flask import Flask
 from alchemy.repository.people_repository import find_all, find_by_id, create_person
 from flask import jsonify
 from flask import request
+from sqlalchemy import exc
 
 
 app = Flask(__name__)
@@ -28,5 +29,5 @@ def post_people():
     try:
         create_person(person)
         return jsonify("Ok"), 201
-    except Exception:
+    except exc.SQLAlchemyError:
         return jsonify("Error al registrar"), 400

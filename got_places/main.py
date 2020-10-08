@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from alchemy.repository.places_repository import find_all, find_by_id, create_place
+from sqlalchemy import exc
 from flask import request
 
 
@@ -27,5 +28,5 @@ def post_people():
     try:
         create_place(place)
         return jsonify("Ok"), 201
-    except Exception:
+    except exc.SQLAlchemyError:
         return jsonify("Error al registrar"), 400
