@@ -2,9 +2,13 @@ version: '3.1'
 services:
   db:
     restart: always
-    build: ./docker/database
+    image: postgres:12.2
     ports:
       - 5430:5430
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
   app:
     restart: always
     build: 
@@ -20,5 +24,6 @@ services:
       - FLASK_ENV=development
       - FLASK_DEBUG=true
       - DB_HOST=db
+      - DATABASE_URL=postgresql+psycopg2://postgres:password@db:5432/people
     volumes:
       - .:/app

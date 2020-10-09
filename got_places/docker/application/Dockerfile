@@ -1,4 +1,4 @@
-FROM python:3.7.2
+FROM python:3.8
 
 LABEL Author="Alejandro Dotor"
 LABEL E-mail="alexdotordp@gmail.com"
