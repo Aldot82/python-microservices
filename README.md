@@ -20,4 +20,5 @@ docer exec -it <container> pipenv run python -m pytest
 
 docker network create `{network_name}`
 
-docker network connect `{network_name}` `{container}
+docker network connect `{network_name}` `{container}`
+
